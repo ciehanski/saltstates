@@ -36,3 +36,7 @@ enable_rsyslog:
 install_netdata:
   bash <(curl -Ss https://my-netdata.io/kickstart.sh) all:
     cmd.run
+
+update_upgrade_ubuntu:
+  sudo apt-get update && sudo apt-get upgrade -y:
+    cmd.run
