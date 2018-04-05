@@ -3,10 +3,9 @@ install_qga:
     - name: qemu-guest-agent
 
 change_ssh_port:
-  file.replace:
-    - name: '/etc/ssh/sshd_config'
-    - pattern: '22'
-    - repl: '256'
+  /etc/ssh/sshd_config:
+    - source: salt://files/sshd_config.conf
+    - mode: 0600
   service.running:
     - name: 'sshd'
     - reload: True
@@ -33,10 +32,10 @@ enable_rsyslog:
     - name: rsyslog
     - enable: True
 
-install_netdata:
-  bash <(curl -Ss https://my-netdata.io/kickstart.sh) all:
-    cmd.run
-
 update_upgrade_ubuntu:
   sudo apt-get update && sudo apt-get upgrade -y:
+    cmd.run
+
+install_netdata:
+  bash <(curl -Ss https://my-netdata.io/kickstart.sh) all:
     cmd.run
