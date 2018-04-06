@@ -37,6 +37,6 @@ update_upgrade_ubuntu:
   cmd.run:
     - name: sudo apt-get update && sudo apt-get upgrade -y
 
-install_netdata:
-  cmd.run:
-    - name: bash <(curl -Ss https://my-netdata.io/kickstart.sh) all
+#install_netdata:
+#  cmd.run:
+#    - name: bash <(curl -Ss https://my-netdata.io/kickstart.sh) all
