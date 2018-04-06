@@ -4,8 +4,9 @@ install_qga:
 
 change_ssh_port:
   /etc/ssh/sshd_config:
-    - source: salt://etc/ssh/sshd_config.conf
-    - mode: 0600
+    file.managed:
+      - source: salt://etc/ssh/sshd_config.conf
+      - mode: 0600
   service.running:
     - name: 'sshd'
     - reload: True
@@ -31,7 +32,7 @@ enable_rsyslog:
     - enable: True
 
 update_upgrade_ubuntu:
-  cmd run:
+  cmd.run:
     - name: sudo apt-get update && sudo apt-get upgrade -y
 
 install_netdata:
