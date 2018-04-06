@@ -2,7 +2,7 @@ install_qga:
   pkg.installed:
     - name: qemu-guest-agent
 
-change_ssh_port:
+configure_ssh:
   file.managed:
     - name: /etc/ssh/sshd_config
     - source: salt://etc/ssh/sshd_config.conf
