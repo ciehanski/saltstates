@@ -4,38 +4,36 @@ install_qga:
 
 change_ssh_port:
   /etc/ssh/sshd_config:
-    - source: salt://files/sshd_config.conf
+    - source: salt://etc/ssh/sshd_config.conf
     - mode: 0600
   service.running:
     - name: 'sshd'
     - reload: True
 
 enable_ufw:
-  sudo ufw allow from 192.168.100.0/24 proto tcp to any port 256:
-    cmd.run
-  sudo ufw allow from 192.168.99.49 proto tcp to any port 19999:
-    cmd.run
-  sudo ufw allow from 192.168.100.0/24 proto tcp to any port 19999:
-    cmd.run
-  sudo ufw allow from 192.168.99.100 proto udp to any port 1514:
-    cmd.run
+  cmd.run:
+    - name: |
+      sudo ufw allow from 192.168.100.0/24 proto tcp to any port 256
+      sudo ufw allow from 192.168.99.49 proto tcp to any port 19999
+      sudo ufw allow from 192.168.100.0/24 proto tcp to any port 19999
+      sudo ufw allow from 192.168.99.100 proto udp to any port 1514
   service.running:
     - name: ufw
     - enable: True
 
 enable_rsyslog:
-  sudo touch /etc/rsyslog.d/10-graylog.conf:
-    cmd.run
-  echo -n "*.* @192.168.99.100:1514;RSYSLOG_SyslogProtocol23Format" | sudo tee /etc/rsyslog.d/10-graylog.conf:
-    cmd.run
-  service.running:
+  cmd.run:
+    - name: |
+      sudo touch /etc/rsyslog.d/10-graylog.conf
+      echo -n "*.* @192.168.99.100:1514;RSYSLOG_SyslogProtocol23Format" | sudo tee /etc/rsyslog.d/10-graylog.conf
+   service.running:
     - name: rsyslog
     - enable: True
 
 update_upgrade_ubuntu:
-  sudo apt-get update && sudo apt-get upgrade -y:
-    cmd.run
+  cmd run:
+    - name: sudo apt-get update && sudo apt-get upgrade -y
 
 install_netdata:
-  bash <(curl -Ss https://my-netdata.io/kickstart.sh) all:
-    cmd.run
+  cmd.run:
+    - name: bash <(curl -Ss https://my-netdata.io/kickstart.sh) all
