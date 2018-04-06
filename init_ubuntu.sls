@@ -26,7 +26,7 @@ enable_rsyslog:
     - names:
       - sudo touch /etc/rsyslog.d/10-graylog.conf
       - echo -n "*.* @192.168.99.100:1514;RSYSLOG_SyslogProtocol23Format" | sudo tee /etc/rsyslog.d/10-graylog.conf
-   service.running:
+  service.running:
     - name: rsyslog
     - enable: True
 
