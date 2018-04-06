@@ -12,11 +12,11 @@ change_ssh_port:
 
 enable_ufw:
   cmd.run:
-    - name: |
-      sudo ufw allow from 192.168.100.0/24 proto tcp to any port 256
-      sudo ufw allow from 192.168.99.49 proto tcp to any port 19999
-      sudo ufw allow from 192.168.100.0/24 proto tcp to any port 19999
-      sudo ufw allow from 192.168.99.100 proto udp to any port 1514
+    - names:
+      - sudo ufw allow from 192.168.100.0/24 proto tcp to any port 256
+      - sudo ufw allow from 192.168.99.49 proto tcp to any port 19999
+      - sudo ufw allow from 192.168.100.0/24 proto tcp to any port 19999
+      - sudo ufw allow from 192.168.99.100 proto udp to any port 1514
   service.running:
     - name: ufw
     - enable: True
