@@ -3,10 +3,10 @@ install_qga:
     - name: qemu-guest-agent
 
 change_ssh_port:
-  /etc/ssh/sshd_config:
-    file.managed:
-      - source: salt://etc/ssh/sshd_config.conf
-      - mode: 0600
+  file.managed:
+    - name: /etc/ssh/sshd_config
+    - source: salt://etc/ssh/sshd_config.conf
+    - mode: 0600
   service.running:
     - name: 'sshd'
     - reload: True
