@@ -18,6 +18,8 @@ enable_ufw:
       - sudo ufw allow from 192.168.99.49 proto tcp to any port 19999
       - sudo ufw allow from 192.168.100.0/24 proto tcp to any port 19999
       - sudo ufw allow from 192.168.99.100 proto udp to any port 1514
+      - sudo ufw allow from 192.168.10.10 proto tcp to any port 4505
+      - sudo ufw allow from 192.168.10.10 proto tcp to any port 4506
   service.running:
     - name: ufw
     - enable: True
