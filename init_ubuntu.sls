@@ -35,9 +35,9 @@ enable_rsyslog:
 
 update_upgrade_ubuntu:
   cmd.run:
-    - name: sudo apt-get update
-  cmd.run:
-    - name: sudo apt-get upgrade -y
+    - names: 
+      - sudo apt-get update
+      - sudo apt-get upgrade -y
 
 #install_netdata:
 #  cmd.run:
