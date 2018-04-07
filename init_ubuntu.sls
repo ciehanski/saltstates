@@ -5,11 +5,13 @@ install_qga:
 configure_ssh:
   file.managed:
     - name: /etc/ssh/sshd_config
-    - source: salt://ssh/sshd_config.conf
+    - source: salt://ssh/sshd_config
     - mode: 0600
   service.running:
     - name: 'sshd'
     - reload: True
+    - watch:
+      - file: /etc/ssh/sshd_config
 
 enable_ufw:
   cmd.run:
