@@ -13,6 +13,7 @@ configure_ufw:
       - sudo ufw allow from 192.168.60.0/24 proto tcp to any port 10250
       - sudo ufw allow from 192.168.60.0/24 proto tcp to any port 10255
       - sudo ufw allow 30000:32767/tcp
+      - sudo ufw enable
       - sudo ufw reload
 
 join_rancher_cluster:
