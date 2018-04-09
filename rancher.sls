@@ -9,4 +9,4 @@ install docker:
       - sudo apt update
   docker-ce:
     pkg.installed:
-      - version: 17.03-ce
+      - version: 17.03.2-ce
