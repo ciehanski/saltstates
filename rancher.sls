@@ -1,12 +1,8 @@
 install_docker:
   cmd.run:
-    - names:
-      - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-      - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-      - sudo apt-get update
+    - name: curl https://releases.rancher.com/install-docker/17.03.sh | sh
   pkg.installed:
     - name: docker-ce
-    - version: 17.03.2-ce
 
 configure_ufw:
   cmd.run:
