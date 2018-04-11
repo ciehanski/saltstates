@@ -31,5 +31,6 @@ configure_keepalived:
   pkg.installed:
     - name: keepalived
   file.managed:
-    - source: //salt/
-    - replace: /etc/keepalived/keepalived.conf
+    - name: /etc/keepalived/keepalived.conf
+    - source: salt://keepalived/rancher_keepalived.conf
+  
