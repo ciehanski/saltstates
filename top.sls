@@ -2,7 +2,7 @@ base:
 
   'os:Ubuntu':
     - match: grain
-    - init_ubuntu
+    - init.ubuntu
     
   'ranchernode*':
     - rancher.rancher_node
