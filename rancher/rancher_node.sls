@@ -1,5 +1,5 @@
 include:
-  - init_ubuntu
+  - init.ubuntu
   
 install_docker:
   cmd.run:
