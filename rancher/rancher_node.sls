@@ -26,3 +26,10 @@ join_rancher_cluster:
 disable_swap:
   cmd.run:
     - name: sudo sed -i '/ swap / s/^/#/' /etc/fstab
+    
+configure_keepalived:
+  pkg.installed:
+    - name: keepalived
+  file.managed:
+    - source: //salt/
+    - replace: /etc/keepalived/keepalived.conf
