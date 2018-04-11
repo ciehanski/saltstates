@@ -16,8 +16,10 @@ configure_ufw:
       - sudo ufw allow from 192.168.60.0/24 proto tcp to any port 10250
       - sudo ufw allow from 192.168.60.0/24 proto tcp to any port 10255
       - sudo ufw allow 30000:32767/tcp
-      - sudo ufw enable
-      - sudo ufw reload
+  service.running:
+    - name: ufw
+    - enable: True
+    - reload: True
 
 join_rancher_cluster:
   cmd.run:
@@ -33,4 +35,7 @@ configure_keepalived:
   file.managed:
     - name: /etc/keepalived/keepalived.conf
     - source: salt://keepalived/rancher_keepalived.conf
-  
+  service.running:
+    - name: 'keepalived'
+    - enable: True
+    - reload: True
