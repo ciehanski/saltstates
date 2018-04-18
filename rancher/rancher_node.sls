@@ -23,7 +23,7 @@ configure_ufw:
 
 join_rancher_cluster:
   cmd.run:
-    - name: sudo docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.10 http://192.168.60.5:8080/v1/scripts/F8C41F2B55B9591DDE1F:1514678400000:4HFcUIuSW7fSsfaZEt6d2GrrcU
+    - name: sudo docker run --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.10 http://192.168.60.5:8080/v1/scripts/2D923062CC4B3275060B:1514678400000:rfkerzmnYka4bIdaa7hysXC4Mw
 
 disable_swap:
   cmd.run:
