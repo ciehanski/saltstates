@@ -11,6 +11,6 @@ install_zabbix_agent:
 add_firewall_rules:
   cmd.run:
     - name: sudo ufw allow from 192.168.30.100 proto tcp to any port 10050
-  pkg.installed:
+  service.running:
     - name: ufw
     - reload: True
