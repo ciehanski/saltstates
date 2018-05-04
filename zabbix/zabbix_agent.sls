@@ -7,6 +7,9 @@ install_zabbix_agent:
   pkg.installed:
     - name: zabbix-agent
     - enable: True
+  file.managed:
+    - name: /etc/zabbix/zabbix_agentd.conf
+    - source: salt://zabbix/zabbix_agentd.conf
   service.running:
     - name: zabbix-agent
     - reload: True
