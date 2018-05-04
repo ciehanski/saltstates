@@ -7,6 +7,7 @@ install_zabbix_agent:
   pkg.installed:
     - name: zabbix-agent
     - enable: True
+    - start: True
 
 add_firewall_rules:
   cmd.run:
