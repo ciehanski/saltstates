@@ -1,3 +1,6 @@
+include:
+  - users.users
+  
 install_qga:
   pkg.installed:
     - name: qemu-guest-agent
